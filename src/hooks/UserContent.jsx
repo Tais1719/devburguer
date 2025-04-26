@@ -14,9 +14,21 @@ export const UserProvider = ({children }) => {
         localStorage.setItem('devburger:userData', JSON.stringify(userInfo))
      }
 
+           const logout = ()=>{
+            setUserInfo({})
+            localStorage.removeItem('devburger:userData')
+           }
+                     useEffect(()=>{
+                        const userInfoLocalStore = localStorage.getItem('devburger:userData')
+                             
+                        if(userInfoLocalStore){
 
+                            setUserInfo(JSON.parse(userInfoLocalStore))
+
+                        }
+                     }, [])
     return(
-        <UserContext.Provider value={{userInfo, putUserData}}>
+        <UserContext.Provider value={{userInfo, putUserData, logout}}>
             {children} </UserContext.Provider>
     )
 }
