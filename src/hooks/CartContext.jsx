@@ -33,6 +33,9 @@ updateLocalStorage(newProductsInCart)
    }
 
    const clearCart = () =>{
+    setCartProducts([])
+    updateLocalStorage([])
+
 
 
    }

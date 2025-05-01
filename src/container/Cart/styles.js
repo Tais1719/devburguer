@@ -1,7 +1,7 @@
 
 import styled from "styled-components";
 
-import Texture from '../../assets/Texture.svg'
+import Texture from '../../assets/texture.svg'
 
 import Background from '../../assets/background-login.svg'
 
@@ -33,7 +33,7 @@ img{
 }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.div`
 font-size: 32px;
 font-weight: 800;
 padding-bottom: 12px;
@@ -42,22 +42,25 @@ text-align: center;
 position: relative;
 
 &::after{
+  content: '';
    position: absolute;
    left: calc(50% + -28px);
    bottom: 0;
-   content: '';
+   left: 50%;
    width: 56px;
    height: 4px;
    background-color:rgb(69, 150, 11);
+   transform: translateX(-50%);
 }
 `;
 
 export const Content = styled.div`
 display: grid;
-grid-template-columns: 1fr 20%;
+grid-template-columns: 1fr 25%;
 gap: 40px;
 width: 100%;
-max-width: 1280%;
-pad: 40px;
+max-width: 1280px;
+padding: 40px;
 margin: 0 auto;
 `;
+

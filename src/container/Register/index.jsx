@@ -76,7 +76,7 @@ export function Register() {
     
 
      }catch(error) { 
-      toast.error('falha no sistema')
+      toast.error('falha no sistema!tente novamente')
 
       }
     }
