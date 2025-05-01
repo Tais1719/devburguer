@@ -1,6 +1,5 @@
 import { Container, HeaderLink, LinkContainer, LogoutButton, Navigation, Options, Profile , Content} from "./styles"
 
-
 import  { UserCircle, ShoppingCart } from '@phosphor-icons/react'
 import { useNavigate, useResolvedPath } from "react-router-dom"
 import { useUser } from '../../hooks/UserContent'
