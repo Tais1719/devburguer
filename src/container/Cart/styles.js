@@ -9,7 +9,7 @@ export const Container = styled.div`
 width: 100%;
   background: 
     linear-gradient(
-      rgba(180, 178, 178, 0.5),
+      rgba(224, 205, 205, 0.5),
       rgba(201, 197, 197, 0.5)
     ),
     url('${Background}');

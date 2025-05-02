@@ -1,21 +1,28 @@
-import  { useState } from "react";
-import { useLocation } from "react-router-dom";
-
-import './styles'; 
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import "../styles.css";
 
 import {
   PaymentElement,
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
+import { useCart } from "../../../hooks/CartContext";
+import { api } from "../../../services/api";
+import { toast } from "react-toastify";
 
-export default function CheckoutForm() {
+
+
+export  function CheckoutForm() {
+  
+    const {cartProducts, clearCart} = useCart()
+    const navigate = useNavigate()
+
   const stripe = useStripe();
   const elements = useElements();
-  const { 
-    state:{dpmCheckerLink} ,
-   }  = useLocation()
-       
+  const {
+    state: { dpmCheckerLink },
+  } = useLocation();
 
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +31,7 @@ export default function CheckoutForm() {
     e.preventDefault();
 
     if (!stripe || !elements) {
-        console.error('Strpies ou Elements com falha,tente Novamente')
+      console.error("Stripe ou Elements com falha, tente novamente");
       return;
     }
 
@@ -32,34 +39,85 @@ export default function CheckoutForm() {
 
     const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
-      redirect:'if_required',
-     
+      redirect: "if_required",
     });
 
-    if (error.type === "card_error" || error.type === "validation_error") {
+    if (error) {
       setMessage(error.message);
-    } else {
-      setMessage("An unexpected error occurred.");
-    }
+      toast.error(error.message)
+    } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+            
+    
+    try { 
+      const products = cartProducts.map((product) =>{ 
+        return { 
+          id: product.id, 
+          quantity: product.quantity,
+          price: product.price}
+      })
+      
+      const { status } = await api.post(
+        '/orders', 
+        {products},
+        { 
+        validateStatus:() => true,
+       });
+     
+      if (status === 200 || status === 201) {
+        
+        setTimeout(()=>{
+          navigate(`/complete?payment_intent_client_secret= ${paymentIntent.client_secret}`),
+          clearCart()
+      },3000)
+      clearCart()
+        toast.success('Pedido Realizado com Sucesso');
+      } else if (status === 400) {
+        toast.error('Falha ao Realizar seu Pedido');
+      }else {
+        throw new Error();
+  
+  
+  
+      }
+      
+  
+       }catch(error) { 
+        toast.error('Falha no sistema!Tente Novamente')
+  
+        }
+
+    }else  { 
+      toast.error('Falha no sistema!Tente Novamente')
+
+      }
+
 
     setIsLoading(false);
   };
 
   const paymentElementOptions = {
-    layout: "accordion"
-  }
+    layout: "accordion",
+  };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
-
-      <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
-        <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
-        </span>
-      </button>
-      {/* Show any error or success messages */}
-      {message && <div id="payment-message">{message}</div>}
-    </form>
+    <div className="container">
+      <form id="payment-form" onSubmit={handleSubmit}>
+        <PaymentElement id="payment-element" options={paymentElementOptions} />
+        <button
+          disabled={isLoading || !stripe || !elements}
+          id="submit"
+          className="button"
+        >
+          <span id="button-text">
+            {isLoading ? (
+              <div className="spinner" id="spinner"></div>
+            ) : (
+              "Pagar agora"
+            )}
+          </span>
+        </button>
+        {message && <div id="payment-message">{message}</div>}
+      </form>
+    </div>
   );
 }

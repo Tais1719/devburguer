@@ -8,8 +8,18 @@
     height: 100vh;
     width: 100vw;
   }
+  .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    min-width: 80vh;
+
+  }
   
-  form {
+
+  #payment-form {
     width: 30vw;
     min-width: 500px;
     align-self: center;
@@ -17,7 +27,6 @@
       0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
     border-radius: 7px;
     padding: 40px;
-    margin-top: auto;
     margin-bottom: auto;
   }
   
@@ -35,7 +44,7 @@
   }
   
   /* Buttons and links */
-  button {
+  .button {
     background: #0055DE;
     font-family: Arial, sans-serif;
     color: #ffffff;
@@ -51,11 +60,11 @@
     width: 100%;
   }
   
-  button:hover {
+  .button:hover {
     filter: contrast(115%);
   }
   
-  button:disabled {
+  .button:disabled {
     opacity: 0.5;
     cursor: default;
   }
@@ -143,20 +152,15 @@
     border-radius: 50%;
   }
   
-  h2 {
-    margin: 0;
-    color: #30313D;
-    text-align: center;
-  }
   
-  a {
+  .link {
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
     font-family: Arial, sans-serif;
     display: block;
   }
-  a:hover {
+.link:hover {
     filter: contrast(120%);
   }
   
