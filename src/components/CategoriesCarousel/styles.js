@@ -27,7 +27,7 @@ padding-left: 40px;
 
 export const Title = styled.h2`
 font-size: 32px;
-color: #9758a6;
+color:  ${(props) =>props.theme.purple};
 font-weight: 900;
 padding-bottom: 12px;
 position: relative;
@@ -41,7 +41,7 @@ margin-top: 20px;
     bottom: 0;
     width: 55px;
     height: 4px;
-    background: #9758a6;
+    background:  ${(props) =>props.theme.purple};
     left: 50%;
 transform: translateX(-28px);
 

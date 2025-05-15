@@ -66,8 +66,8 @@ export  function CheckoutForm() {
       if (status === 200 || status === 201) {
         
         setTimeout(()=>{
-          navigate(`/complete?payment_intent_client_secret= ${paymentIntent.client_secret}`),
-          clearCart()
+          navigate(`/complete?payment_intent_client_secret= ${paymentIntent.client_secret}`)
+        
       },3000)
       clearCart()
         toast.success('Pedido Realizado com Sucesso');

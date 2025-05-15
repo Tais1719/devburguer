@@ -6,7 +6,7 @@ width: 100%;
 height: 52px;
   border-radius: 5px;
   border: 0;
-  background-color: #9758a6;
+  background-color:  ${(props) =>props.theme.purple};
   cursor: pointer;
   font-size: 30px;
   color:#fff;

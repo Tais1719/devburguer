@@ -47,7 +47,7 @@ const responsive = {
 
     return(
         <Container>
-           <Title>Categorias</Title> 
+           <Title>Categorias </Title> 
          
           <Carousel
     responsive={responsive}
@@ -59,11 +59,15 @@ const responsive = {
       <ContainerItems key={category.id} imageUrl={category.url}>
         <CategoryButton
          onClick={()=>{
+        
           navigate({
             pathname:'/cardapio',
             search:`?categorias=${category.id}`,
+
           }
+
           )
+        
          } }
         
         >

@@ -82,17 +82,19 @@ margin: 50px auto;
 
 `
 
+
+
 export const CategoryButton = styled(Link)`
-text-decoration: none;
-cursor: pointer;
-background: none;
-color: ${(props) => (props.$isActiveCategory ? ' #9758a6': '#696969')} ;
-font-size: 24px;
-font-weight: 600;
-padding-bottom: 5px; 
-line-height: 20px;
-border: none;
-border-bottom: ${(props) => props.$isActiveCategory && '3px solid #9758a6'}
-
-
-`
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  color: ${(props) =>
+    props.$isActiveCategory ? (props).theme.purple : '#696969'};
+  font-size: 24px;
+  font-weight: 600;
+  padding-bottom: 5px;
+  line-height: 20px;
+  border: none;
+  border-bottom: ${(props) =>
+    props.$isActiveCategory && `3px solid`};
+`;

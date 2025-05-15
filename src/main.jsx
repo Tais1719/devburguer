@@ -1,22 +1,36 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { RouterProvider } from 'react-router-dom'
-import { router } from './Routes'
-import GlobalStyles from './styles/globalStyle'
-import { ToastContainer } from 'react-toastify'
-import AppProvider from './hooks'
 import { Elements } from '@stripe/react-stripe-js'
-import stripePromise from './config/stripeConfig'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import { ThemeProvider } from 'styled-components'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+import stripePromise from './config/stripeConfig'
+import AppProvider from './hooks'
+import { Router } from './Routes'
+import GlobalStyles from './styles/globalStyle'
+import  { standardTheme } from './styles/themes/standard'
+
+
+
+
+
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+
+    <ThemeProvider theme={ standardTheme }>
     <AppProvider>
- 
-    <RouterProvider router={router} />
+
+      <BrowserRouter>
+      <Router/>
+             
+      </BrowserRouter>
     <GlobalStyles />
     <Elements stripe={stripePromise}>
     <ToastContainer autoClose={2000} theme="colored" />
     </Elements>
     </AppProvider>
-  </StrictMode>,
+    </ThemeProvider>
+  </React.StrictMode>,
 )

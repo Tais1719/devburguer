@@ -54,7 +54,13 @@ export function Login() {
         success: {
           render(){
             setTimeout(()=>{ 
+               if(userData?.admin){ 
+                navigate('/admin/pedidos')
+              }else{ 
                 navigate('/')
+                
+               }
+               
               }, 2000)
             return  'seja Bem-vindo(a)👌'
           },

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 
 export const ContainerButton = styled.button`
-background-color: #9758a6 ;
+background-color:  ${(props) =>props.theme.purple} ;
 width: 50;
 height: 52px;
 margin-top: 20px;
@@ -13,7 +13,7 @@ font-size: 30px;
 color: #ffffff;
 
 &:hover{
-    background-color: #9758a6;
+    background-color:  ${(props) =>props.theme.purple};
  }
 
 `

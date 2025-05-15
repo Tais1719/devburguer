@@ -15,7 +15,7 @@
     align-items: center;
     margin-top: 100px;
     min-width: 80vh;
-
+ 
   }
   
 
@@ -62,6 +62,10 @@
   
   .button:hover {
     filter: contrast(115%);
+  }
+
+  .status-title{
+    text-align: center;
   }
   
   .button:disabled {
@@ -200,6 +204,7 @@
   }
   
   #retry-button {
+    text-decoration: none;
     text-align: center;
     background: #0055DE;
     color: #ffffff;
