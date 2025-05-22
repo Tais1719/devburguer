@@ -197,8 +197,9 @@ export function EditProduct() {
                   border: 'none',
                   cursor: 'pointer',
                 }}
+              
               >
-                Não
+           nao
               </button>
             </div>
           </div>

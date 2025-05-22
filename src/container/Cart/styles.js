@@ -30,6 +30,7 @@ height:180px ;
 
 img{
     height: 120px;
+    margin-top: 90px;
 }
 `;
 
@@ -37,6 +38,7 @@ export const Title = styled.div`
 font-size: 32px;
 font-weight: 800;
 padding-bottom: 12px;
+margin-top: 50px;
 color: rgb(69, 150, 11) ;
 text-align: center;
 position: relative;

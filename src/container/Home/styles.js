@@ -1,9 +1,10 @@
-import styled from "styled-components";
+
+ import styled from "styled-components";
 
 
-import BannerHome from '../../assets/banner-home.svg'
+import BannerHome from '../../assets/logo3.jpg'
 
-import Background from '../../assets/background-login.svg'
+import Background from '../../assets/logo3.jpg'
 
 
 
@@ -11,13 +12,14 @@ import Background from '../../assets/background-login.svg'
  background: url('${BannerHome}');
  background-size: cover;
  background-position: center;
- height:450px;
+ height:600px;
+
 
  h1{ 
     
    font-family: "Road Rage", sans-serif;
     font-size: 80px;
-    color: #f4f4f4;
+    color:rgb(27, 16, 238);
     position: absolute;
     right: 20%;
     top: 10%;
@@ -28,9 +30,10 @@ import Background from '../../assets/background-login.svg'
 `
 
 export const Container = styled.section`
+
   background: 
     linear-gradient(
-      rgba(244, 239, 239, 0.5),
+      rgba(255, 255, 255, 0.5),
       rgba(201, 197, 197, 0.5)
     ),
     url('${Background}');

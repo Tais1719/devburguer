@@ -88,13 +88,12 @@ return 0;
             <Container>
 
             <Banner>
-            <h1>O MELHOR
+            <h1> 
                 <br/>
-                HAMBURGUER
+                Moda que te define
                 <br/>
-                ESTA AQUI 
-              
-            <span>este cardapio esta irresistível</span>
+                calidad que, que te 
+            <span> Acompaña! </span>
             </h1>
             </Banner>
             <CategoryMenu>
@@ -128,6 +127,7 @@ return 0;
                     <CardProduct product={product} key={product.id}/>
                 )) }
                 </ProductsContainer>
+          
             </Container>
         </main>
     )

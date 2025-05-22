@@ -6,22 +6,17 @@ import {  CheckoutForm  }from "../../components";
 
 
 
-export function ChecKout(){
-const { 
-  state:{clientSecret } ,
- }  = useLocation()
-      
+// Renomeie de ChecKout para Checkout
+export function Checkout() {
+  const { state: { clientSecret } } = useLocation();
 
- if (!clientSecret) { 
-  return <div>Error, volte e tente novamente</div>
- } 
-  
+  if (!clientSecret) {
+    return <div>Error, volte e tente novamente</div>;
+  }
 
-  return(
-    <Elements stripe ={ stripePromise} options= { { clientSecret} }>
-        <CheckoutForm/>
+  return (
+    <Elements stripe={stripePromise} options={{ clientSecret }}>
+      <CheckoutForm />
     </Elements>
-  
-  )
-
+  );
 }

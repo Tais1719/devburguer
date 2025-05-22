@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import {
   Cart,
-  ChecKout,
   Home,
   Login,
   Menu,
@@ -9,7 +8,8 @@ import {
   NewProduct,
   Orders,
   EditProduct,
-  Products
+  Products,
+  Checkout
 } from '../container';
 
 import { CompletePaymentWrapper } from '../container/completePayment/CompletePaymentWrapper';
@@ -23,7 +23,7 @@ export function Router() {
         <Route path='/' element={<Home />} />
         <Route path='/cardapio' element={<Menu />} />
         <Route path='/carrinho' element={<Cart />} />
-        <Route path='/checkout' element={<ChecKout />} />
+        <Route path='/checkout' element={<Checkout />} />
         <Route path='/complete' element={<CompletePaymentWrapper />} />
       </Route>
 

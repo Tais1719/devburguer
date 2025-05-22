@@ -1,5 +1,7 @@
+import { purple } from "@mui/material/colors";
+
 export const standardTheme = {
-purple: '#9758a6',
+purple: '#8355c1',
 darkPurple: '#5c2669',
 secondDarkPurple: '#6f357c',
 orange: '#ff8c05',

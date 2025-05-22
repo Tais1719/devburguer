@@ -59,7 +59,7 @@ display: flex;
 align-items: center;
 padding: 20px 10px;
 width: 100%;
-height: 250px;
+height: 200px;
 
 p{
   color: #ffffff;

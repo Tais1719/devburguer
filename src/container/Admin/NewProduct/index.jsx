@@ -28,7 +28,7 @@ const schema = yup
     offer: yup.bool(),
     file: yup.mixed().test('required', 'Escolha um arquivo para continuar', (value) => { 
         return value && value.length > 0
-     } ).test('fileSize', 'carregue os arquivos ate 5bm', value =>{ 
+     } ).test('fileSize', 'carregue os arquivos ate 9bm', value =>{ 
                  return value && value.length > 0 && value[0].size <= 50000;
       } ).test('type', 'carregue apenas image png ou jpeg', value  => { 
         return(

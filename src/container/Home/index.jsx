@@ -1,24 +1,27 @@
 
-import { OffersCarousel,CategoriesCarousel } from "../../components"
-import { Banner, Container,  } from "./styles";
+import { OffersCarousel, CategoriesCarousel } from "../../components"
+import { Banner, Container, } from "./styles";
 
+export function Home() {
 
-export function Home() { 
-    
-    return(
+    return (
         <main>
+      
             <Banner>
-            <h1>Bem-Vindo(a)</h1>
+                <h1>EcoModa</h1>
+             
             </Banner>
+
+
             <Container>
                 <div>
-                   <CategoriesCarousel/>
-                    
-                    <OffersCarousel/>
+                    <CategoriesCarousel />
+
+                    <OffersCarousel />
                 </div>
             </Container>
         </main>
     )
-} 
+}
 
 

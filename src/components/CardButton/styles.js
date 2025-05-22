@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
-
-
 export const ContainerButton = styled.button`
-background-color:  ${(props) =>props.theme.purple} ;
-width: 50;
-height: 52px;
-margin-top: 20px;
-border: 0;
-border-radius: 5px;
-font-size: 30px;
-color: #ffffff;
+  background-color: #9758a6;
+  width: 100%;
+  height: 42px;
+  margin-top: 12px;         /* espaço mais natural abaixo do conteúdo */
+  border: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
 
-&:hover{
-    background-color:  ${(props) =>props.theme.purple};
- }
-
-`
+  &:hover {
+    background-color:rgb(187, 0, 255);
+  }
+`;

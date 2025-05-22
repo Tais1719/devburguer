@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import BannerHamburger from '../../assets/banner-hamburger.svg'
+import BannerHamburger from '../../assets/loja4.jpg'
 
 
-import Background from '../../assets/background-login.svg'
+import Background from '../../assets/background.jpg'
 import { Link } from "react-router-dom";
 
 
@@ -11,31 +11,35 @@ export const Container = styled.div`
 
 width: 100%;
 min-height: 100vh;
-background-color: #f0f0f0;
+background-color:rgb(95, 231, 10);
  background: linear-gradient(
-      rgba(211, 211, 211, 0.5),
-      rgba(209, 203, 203, 0.5)
+      rgba(174, 219, 191, 0.5),
+      rgba(113, 120, 115, 0.5)
     ),
     url('${Background}');
+   
+  background-repeat: no-repeat;
+
 
 
 
 
 
 h1{
-font-family: 'Road Rage', sans-serif;
-    font-size: 80px;
-    line-height: 65px;
-    color: #ffffff;
+font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 70px;
+    line-height: 67px;
+    color:rgb(246, 246, 246);
     position: absolute;
-    right: 20%;
+   left:10%;
     top: 30%;
 
 }
 span{
 display: block;
-color: #fff;
-font-size: 20px;
+
+color:rgb(255, 254, 254);
+font-size: 40px;
 
 }
 `
@@ -68,19 +72,30 @@ gap: 50px;
 margin-top: 30px;
  
 `
-
 export const ProductsContainer = styled.div`
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-padding: 40px;
-gap: 60px;
-justify-content: center;
-max-width: 1280px;
-margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Desktop */
+  padding: 20px;
+  gap: 50px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 50px auto;
 
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr); /* Tablets */
+  }
 
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr); /* Celulares maiores */
+  }
 
-`
+  @media (max-width: 430px) {
+    grid-template-columns: 1fr; /* Celular pequeno: 1 por linha */
+    gap: 30px;
+    padding: 10px;
+  }
+`;
+
 
 
 
