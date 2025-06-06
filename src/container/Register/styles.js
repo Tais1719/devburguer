@@ -69,7 +69,7 @@ export const Title = styled.h2`
 
 font-family: "Road Rage", serif;
   font-size: 40px;
-  color: ${(props) =>props.theme.purple};
+  color: ${(props) =>props.theme.darkBlue};
   
 
 

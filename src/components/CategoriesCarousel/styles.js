@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 
 export const Container = styled.div`
+ width: 98vw; /* Ocupa toda a largura da viewport */
+
 .carousel-item{
     padding-right: 40px;
 
@@ -14,7 +16,7 @@ export const Container = styled.div`
 }
 
 
-
+ 
 .react-multiple-carousel__arrow--right {
 right: 50px;
   top:10px;
@@ -27,7 +29,7 @@ padding-left: 40px;
 
 export const Title = styled.h2`
 font-size: 32px;
-color:  ${(props) =>props.theme.purple};
+color:  ${(props) =>props.theme.blue};
 font-weight: 900;
 padding-bottom: 12px;
 position: relative;
@@ -41,7 +43,7 @@ margin-top: 20px;
     bottom: 0;
     width: 55px;
     height: 4px;
-    background:  ${(props) =>props.theme.purple};
+    background:  ${(props) =>props.theme. darkBlue};
     left: 50%;
 transform: translateX(-28px);
 
@@ -59,8 +61,8 @@ display: flex;
 align-items: center;
 padding: 20px 10px;
 width: 100%;
-height: 200px;
-
+height: 250px;
+ 
 p{
   color: #ffffff;
 background-color:rgba(0,0,0,0.5);
@@ -69,7 +71,6 @@ border-radius: 30px;
 font-size: 22.5px;
 font-weight: bold;
 margin-top:50px;
-
 
 
  
@@ -93,7 +94,7 @@ text-decoration: none;
 
 
 &:hover{
- background-color:purple;
+ background-color:#778899;
 
 }
 

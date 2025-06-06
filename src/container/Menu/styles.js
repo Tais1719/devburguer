@@ -26,20 +26,20 @@ background-color:rgb(95, 231, 10);
 
 
 h1{
-font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: 70px;
+   font-family: "Kapakana", cursive;
+    font-size: 60px;
     line-height: 67px;
-    color:rgb(246, 246, 246);
+    color:rgb(211, 246, 246);
     position: absolute;
-   left:10%;
+   left:5%;
     top: 30%;
 
 }
 span{
 display: block;
-
-color:rgb(255, 254, 254);
-font-size: 40px;
+font-family: "Kapakana", cursive;
+color:#10b981;
+font-size: 50px;
 
 }
 `
@@ -104,12 +104,12 @@ export const CategoryButton = styled(Link)`
   cursor: pointer;
   background: none;
   color: ${(props) =>
-    props.$isActiveCategory ? (props).theme.purple : '#696969'};
-  font-size: 24px;
-  font-weight: 600;
+    props.$isActiveCategory ? (props).theme. darkBlue : '#36454f'};
+  font-size: 19px;
+
   padding-bottom: 5px;
   line-height: 20px;
   border: none;
   border-bottom: ${(props) =>
-    props.$isActiveCategory && `3px solid`};
+    props.$isActiveCategory && `3px solid navy`};
 `;

@@ -39,11 +39,11 @@ padding: 19px 20px;
 margin-top: 5px;
 text-decoration:none;
 color: ${(props) => props.theme.white} ;
-background-color: ${(props) => (props.$isActive ? props.theme.purple : 'transparent')} ;
+background-color: ${(props) => (props.$isActive ? props.theme.darkBlue: 'transparent')} ;
 
 
 &:hover { 
-    background-color:  ${(props) => props.theme.purple};
+    background-color:  ${(props) => props.theme.darkBlue};
 
 }
 

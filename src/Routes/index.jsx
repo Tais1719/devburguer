@@ -1,23 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
-import {
-  Cart,
-  Home,
-  Login,
-  Menu,
-  Register,
-  NewProduct,
-  Orders,
-  EditProduct,
-  Products,
-  Checkout
-} from '../container';
 
+import { ProductDetailsPage } from '../components/page/ProductDetailsPage';
+
+import { Cart, Home, Login, Menu, Register, NewProduct, Orders, EditProduct, Products, Checkout } from '../container';
 import { CompletePaymentWrapper } from '../container/completePayment/CompletePaymentWrapper';
 import { AdminLayout } from '../layouts/AdminLayout';
 import { UserLayout } from '../layouts/UserLayout';
 
 export function Router() {
-  return (
+  return (  
     <Routes>
       <Route path='/' element={<UserLayout />}>
         <Route path='/' element={<Home />} />
@@ -25,6 +16,7 @@ export function Router() {
         <Route path='/carrinho' element={<Cart />} />
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/complete' element={<CompletePaymentWrapper />} />
+        <Route path='/produto/:id' element={<ProductDetailsPage />} /> {/* A rota correta para o produto */}
       </Route>
 
       <Route path='/admin' element={<AdminLayout />}>

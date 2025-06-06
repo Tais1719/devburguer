@@ -1,134 +1,76 @@
 import { useEffect, useState } from "react";
-import { Banner, Container, CategoryMenu, ProductsContainer, CategoryButton } from "./styles";
+import { Banner, Container, ProductsContainer } from "./styles";
 import { api } from "../../services/api";
 import { FormatPrice } from "../../utils/formatPrice";
 import { CardProduct } from "../../components/CardProduct";
-import {  useLocation, useNavigate } from "react-router-dom";
-import { createGlobalStyle } from 'styled-components'
+import { useLocation } from "react-router-dom";
 
-
-export function Menu () { 
-
-
-  const [categories, setCategories] = useState([]);
-  
+export function Menu() {
   const [products, setProducts] = useState([]);
-  
-  const [filteredProducts, setfilteredProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-   
-   const navigate = useNavigate();
+  const { search } = useLocation();
+  const queryParams = new URLSearchParams(search);
 
-   const{search}= useLocation()
+  const [activeCategory, setActiveCategory] = useState(() => {
+    const categoryId = +queryParams.get("categorias"); // <-- deve ter "s"
+    return isNaN(categoryId) ? 0 : categoryId;
+  });
 
-   const queryParams = new URLSearchParams(search)
-   
-         
-  const [activeCategory,  setActiveCategory]  = useState(()=>{ 
-const categoryId = +queryParams.get('categorias')
-     
-if(categoryId){ 
-    return categoryId;
+  // Carregar produtos
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        const { data } = await api.get("/products");
+        const formatted = data.map((product) => ({
+          ...product,
+          CurrencyValue: FormatPrice(product.price),
+        }));
+        setProducts(formatted);
+      } catch (error) {
+        console.error("Erro ao carregar produtos:", error);
+      }
+    }
+
+    loadProducts();
+  }, []);
+
+  // Filtrar produtos ao mudar categoria
+  useEffect(() => {
+    if (activeCategory === 0) {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products.filter(
+        (product) => product.category_id === activeCategory
+      );
+      setFilteredProducts(filtered);
+    }
+  }, [products, activeCategory]);
+
+  // Reagir à mudança na URL (ex: clique no link do Header)
+  useEffect(() => {
+    const categoryId = +queryParams.get("categorias");
+    setActiveCategory(isNaN(categoryId) ? 0 : categoryId);
+  }, [search]);
+
+  return (
+    <main>
+      <Container>
+        <Banner>
+          <h1>
+            <br />
+            Moda que te define
+            <br />
+            calidad que, que te <span>Acompaña!</span>
+          </h1>
+        </Banner>
+
+        <ProductsContainer>
+          {filteredProducts.map((product) => (
+            <CardProduct product={product} key={product.id} />
+          ))}
+        </ProductsContainer>
+      </Container>
+    </main>
+  );
 }
-return 0;
-
-   })
-
-
-
-   
-
-    useEffect(()=>{
-      async function loadCategories() {
-
-            const {data }  = await api.get('/categories')
-         const newCategories = [{ id: 0, name: 'Todas' }, ...data];
-
-
-           setCategories(newCategories)
-
-         }
-
-         async function loadProducts() { 
-                     const {data }  = await api.get('/products')
-
-               
-         
-                    const newProducts = data.map((product) =>({
-                         CurrencyValue: FormatPrice(product.price),
-                     ...product,
-                    }))
-                 
-         
-                    setProducts(newProducts)
-                
-         
-         
-                  }
-                  loadCategories()
-                 loadProducts()
-        
-     }, [])
-     useEffect(() =>{
-        if (activeCategory === 0){
-            setfilteredProducts(products); 
-         }else{ 
-            const newFilteredProducts = products.filter(
-                (product) =>product.category_id === activeCategory,
-            )
-            setfilteredProducts(newFilteredProducts)
-         }
-
-     },[products, activeCategory])
-
-
-    
-    return(
-        <main>
-            <Container>
-
-            <Banner>
-            <h1> 
-                <br/>
-                Moda que te define
-                <br/>
-                calidad que, que te 
-            <span> Acompaña! </span>
-            </h1>
-            </Banner>
-            <CategoryMenu>
-            {categories.map((category)=>(
-             <CategoryButton 
-             key={category.id}
-             $isActiveCategory ={category.id === activeCategory}
-             onClick={()=>{
-                navigate(
-                    {
-                        pathname:'/cardapio',
-                        search:`?categoria=${category.id}`
-                    },
-                    {
-                        replace:true,
-                    },
-                   
-                )
-                setActiveCategory(category.id)
-             }}
-
-
-             > {category.name}
-
-              </CategoryButton>
-            ))}
-            </CategoryMenu>
-            
-                <ProductsContainer>
-                { filteredProducts.map(product  =>(
-                    <CardProduct product={product} key={product.id}/>
-                )) }
-                </ProductsContainer>
-          
-            </Container>
-        </main>
-    )
-} 

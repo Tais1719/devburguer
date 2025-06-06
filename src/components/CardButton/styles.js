@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerButton = styled.button`
-  background-color: #9758a6;
+  background-color:#2f4f4f;
   width: 100%;
   height: 42px;
   margin-top: 12px;         /* espaço mais natural abaixo do conteúdo */
@@ -14,6 +14,6 @@ export const ContainerButton = styled.button`
   transition: background-color 0.2s;
 
   &:hover {
-    background-color:rgb(187, 0, 255);
+    background-color:#778899;
   }
 `;

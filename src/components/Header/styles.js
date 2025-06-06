@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 // Container do Header
 export const Container = styled.div`
-  background-color: ${(props) => props.theme.mainBlack};
+  background-color: ${(props) => props.theme.darkWhite};
   width: 100%;
   height: 72px;
   padding: 0 56px;
@@ -35,22 +35,22 @@ export const Navigation = styled.div`
 
   hr {
     height: 24px;
-    border: 1px solid #625e5e;
+    border: 1px solid red;
   }
 `;
 
 export const HeaderLink = styled(Link)`
   color: ${(props) =>
-    props.$isActive ? props.theme.purple : props.theme.white};
+    props.$isActive ? props.theme.   emerald : props.theme.  deepForest};
   border-bottom: ${(props) =>
-    props.$isActive ? `1px solid ${(props) => props.theme.purple}` : 'none'};
+    props.$isActive ? `1px solid ${(props) => props.theme. mainBlack}` : 'none'};
   padding-bottom: 5px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
   transition: color 200ms;
 
   &:hover {
-    color: ${(props) => props.theme.purple};
+    color: ${(props) => props.theme. emerald};
   }
 `;
 export const Options = styled.div`
@@ -68,14 +68,14 @@ export const Profile = styled.div`
   font-size: 14px;
 
   p {
-    color: #fff;
+    color: black;
     line-height: 90%;
     font-weight: 300;
   }
 
   span {
     font-weight: 700;
-    color: #9758a6;
+    color:#1e3a8a;
   }
 `;
 
@@ -86,7 +86,7 @@ export const LinkContainer = styled.div`
 `;
 
 export const LogoutButton = styled.button`
-  color: #ff3205;
+  color:black;
   text-decoration: none;
   font-weight: 700;
   background-color: transparent;
@@ -117,7 +117,7 @@ export const SearchForm = styled.form`
     justify-content: center;
 
     svg {
-      color: #000;
+      color:  lightBlue;
     }
   }
 `;

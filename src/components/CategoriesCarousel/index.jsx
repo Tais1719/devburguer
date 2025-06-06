@@ -41,7 +41,7 @@ export function CategoriesCarousel() {
   return (
     <Container>
       <Title>Categorias</Title>
-
+ 
       <Carousel
         responsive={responsive}
         infinite={true}

@@ -39,7 +39,7 @@ svg{
 
 
 &:hover{
-    background-color:${(props) => props.theme.purple};
+    background-color:${(props) => props.theme.darkBlue};
 
 
     svg{

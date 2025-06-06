@@ -5,10 +5,10 @@ export function CardButton ({...props}){
     return(
     
          <ContainerButton {...props}>
-            <img src={Cart} alt='carrinhos de compras'/>
+          
+          Agregar al carrito
          </ContainerButton>
      
     )
 
 }
-

@@ -55,7 +55,7 @@ font-weight: 800;
 
 a{
   text-decoration: underline;
-  color:rgb(14, 236, 43) ;
+  color:rgb(56, 26, 249) ;
   
   
   }
@@ -68,7 +68,7 @@ export const Title = styled.h2`
 
 font-family: "Road Rage", serif;
   font-size: 40px;
-  color: ${(props) =>props.theme.purple};
+  color: ${(props) =>props.theme.darkBlue};
   
 
 

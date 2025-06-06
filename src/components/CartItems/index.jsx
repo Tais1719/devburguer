@@ -15,14 +15,15 @@ export function CartItems() {
     return (
         <Table.Root>
             <Table.Header>
-                <Table.Tr>
-                    <Table.Th></Table.Th>
-                    <Table.Th>Itens</Table.Th>
-                    <Table.Th>preço</Table.Th>
-                    <Table.Th>Quantidade</Table.Th>
-                    <Table.Th>Total</Table.Th>
-                    <Table.Th></Table.Th>
-                </Table.Tr>
+            <Table.Tr>
+    <Table.Th></Table.Th>
+    <Table.Th>Itens</Table.Th>
+    <Table.Th>Precio</Table.Th>
+    <Table.Th>Cantidad</Table.Th>
+    <Table.Th>Total</Table.Th>
+    <Table.Th></Table.Th>
+</Table.Tr>
+
             </Table.Header>
             <Table.Body>
                 {cartProducts?.length ? (
@@ -66,7 +67,7 @@ export function CartItems() {
                             </Table.Td>
                         </Table.Tr>
                     ))
-                ) : <EmtyCart>Carrinho vazio</EmtyCart>}
+                ) : <EmtyCart>Carrito vacío</EmtyCart>}
             </Table.Body>
 
         </Table.Root>

@@ -1,6 +1,6 @@
 // src/components/Header.jsx
 import { useNavigate, useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { UserCircle, ShoppingCart, MagnifyingGlass } from '@phosphor-icons/react'
 import { useUser } from '../../hooks/UserContent'
 import {
@@ -8,34 +8,60 @@ import {
   LinkContainer, LogoutButton, Navigation, Content
 } from './styles'
 import { useCart } from '../../hooks/CartContext'
+import { api } from '../../services/api'
 
 export function Header() {
   const navigate = useNavigate()
   const { logout, userInfo } = useUser()
-  const { pathname } = useLocation()
+  const { pathname, search } = useLocation()
   const { getCartQuantity } = useCart()
   const [searchTerm, setSearchTerm] = useState('')
+  const [categories, setCategories] = useState([])
   const count = getCartQuantity()
+
+  useEffect(() => {
+    async function loadCategories() {
+      try {
+        const { data } = await api.get('/categories')
+        setCategories(data)
+      } catch (error) {
+        console.error('Erro ao carregar categorias:', error)
+      }
+    }
+
+    loadCategories()
+  }, [])
 
   function logoutUser() {
     logout()
     navigate('/login')
   }
 
+  const currentCategory = new URLSearchParams(search).get('categorias')
+
   return (
-    <Container style={{ position: 'fixed', zIndex: 9999, top:0}}>
-      <Content> 
+    <Container style={{ position: 'fixed', zIndex: 9999, top: 0 }}>
+      <Content>
         <Navigation>
-            <div>
-          <HeaderLink to="/" $isActive={pathname === '/'}>Inicio</HeaderLink>
-          <HeaderLink to="/cardapio" $isActive={pathname === '/cardapio'}>Todos</HeaderLink>
+          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+            <HeaderLink to="/" $isActive={pathname === '/'}>Inicio</HeaderLink>
+            <HeaderLink to="/cardapio" $isActive={pathname === '/cardapio' && !currentCategory}>Todos</HeaderLink>
+
+            {categories.map((category) => (
+              <HeaderLink
+                key={category.id}
+                to={`/cardapio?categorias=${category.id}`}
+                $isActive={pathname === '/cardapio' && currentCategory === String(category.id)}
+              >
+                {category.name}
+              </HeaderLink>
+            ))}
           </div>
         </Navigation>
-                 
+
         <Options>
-          
           <Profile>
-            <UserCircle color="#fff" size={24} />
+            <UserCircle color="#636262" size={24} />
             <div>
               <p>Olá, <span>{userInfo.name}</span></p>
               <LogoutButton onClick={logoutUser}>Sair</LogoutButton>
@@ -60,7 +86,7 @@ export function Header() {
 
           <LinkContainer>
             <div style={{ position: 'relative' }}>
-              <ShoppingCart color="#fff" size={24} />
+              <ShoppingCart color="#2b2b2d" size={24} />
               {count > 0 && (
                 <span style={{
                   position: 'absolute',
