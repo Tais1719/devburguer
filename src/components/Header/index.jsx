@@ -19,6 +19,10 @@ export function Header() {
     navigate('/login')
   }
 
+  function goToCart() {
+    navigate('/carrinho')
+  }
+
   return (
     <Container style={{ position: 'fixed', zIndex: 9999, top: 0 }}>
       <Content>
@@ -38,30 +42,33 @@ export function Header() {
             </div>
           </Profile>
 
-          <LinkContainer>
-            <div style={{ position: 'relative' }}>
-              <ShoppingCart color="#2b2b2d" size={24} />
-              {count > 0 && (
-                <span style={{
-                  position: 'absolute',
-                  top: -6,
-                  right: -6,
-                  backgroundColor: 'red',
-                  color: 'white',
-                  borderRadius: '50%',
-                  fontSize: '10px',
-                  width: '16px',
-                  height: '16px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                  {count}
-                </span>
-              )}
-            </div>
-            <HeaderLink to="/carrinho">Carrinho de compras</HeaderLink>
-          </LinkContainer>
+          <div 
+            style={{ 
+              position: 'relative', 
+              cursor: 'pointer' 
+            }}
+            onClick={goToCart}
+          >
+            <ShoppingCart color="#2b2b2d" size={24} />
+            {count > 0 && (
+              <span style={{
+                position: 'absolute',
+                top: -6,
+                right: -6,
+                backgroundColor: 'red',
+                color: 'white',
+                borderRadius: '50%',
+                fontSize: '10px',
+                width: '16px',
+                height: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                {count}
+              </span>
+            )}
+          </div>
         </Options>
       </Content>
     </Container>

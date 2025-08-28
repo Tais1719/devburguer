@@ -1,80 +1,163 @@
-import styled from "styled-components"; 
+import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: aliceblue;
-  border-radius: 20px;
+  background:  #ecf3e9ff ;
+  border-radius: 24px;
+  margin-left: 30px;
+padding: 20px;
+height:40vh;
+ width: 80vh;
+  max-width: 1400px; // largura máxima para não estourar em telas grandes
+  display: grid;
 
-  display:flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 20px;
 
-  * {
-    color: #484848;
-    font-weight: 600;
+
+  .title {
+    border-radius: 16px;
+   
+    color: #464746ff;
+    font-size: 20px;
+ 
+    text-align: center;
+    padding: 15px;
+ 
+    position: relative;
+
+   
   }
 
-  .container-top {
-    display: grid;
-    grid-gap: 10px 18%;
-    grid-template-areas: 
-      'title title'      
-      'items items-price'
-      'delivery-tax delivery-tax-price';
+  .items, .delivery-tax, .total-label {
+    padding: 5px;
 
-    .title {
-      grid-area: title;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      background-color: #484848;
-      color: #fff;
-      width: 100%;
-      padding: 15px;
-      text-align: center;
-      border-top-right-radius: 20px;
-      border-top-left-radius: 20px;
-    }
+   color: #292929ff;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
 
-    .items {
-      grid-area: items;
-      padding-left: 20px;
+  .items-price, .delivery-tax-price, .total-price {
+   color: #fd8585ff;
+    display: flex;
 
-    }
-
-    .items-price {
-      grid-area: items-price;
-      padding-right: 20px;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 16px;
   
-    }
+  }
 
-    .delivery-tax {
-  grid-area: delivery-tax;
+  .total-label, .total-price {
 
-  padding-left: 20px;
-  white-space: nowrap;
+    grid-column: 1 / -1;
+    border-top: 2px solid #ccc;
+    padding-top: 15px;
+    font-size: 18px;
+   
+  }
+  .delivery-container {
+  display: flex;
+  align-items: center;
+  gap: 39vh; /* ajusta a distância entre o texto e o valor */
+  font-size: 16px;
+}
+.items-count {
+  color:#fd8585ff; /* deixa o número em vermelho */
+  font-weight: 700; /* opcional: deixa o número mais destacado */
 }
 
-    .delivery-tax-price {
-      grid-area: delivery-tax-price;
-      padding-right: 20px;
-     
-    
+.delivery-tax {
+  color: #494848ff;
+}
+
+.delivery-tax-price {
+  color: #fd8585ff;
+  font-weight: 700;
+}
+
+
+  .container-button {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+
+    button {
+      background: linear-gradient(135deg, #1b291cff 0%, #a8f5a8ff 100%);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      height: 45px;
+      min-width: 200px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+      }
+
+      &:hover {
+        background: linear-gradient(135deg, #8eb897ff 0%, #7cc575ff 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(137, 228, 115, 0.4);
+
+        &::before {
+          left: 100%;
+        }
+      }
+
+      &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+      }
     }
   }
-
-  .container-bottom {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    margin-top: 24px;
-    padding-right: 40px;
-
-    * {
-
-    font-weight: 700;
-    color: #000;
- 
-  }
-  }
 `;
+
+export const EmptyCartContainer = styled.div`
+
+  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+  border-radius: 24px;
+  margin-left: 60vh;
+ margin-top: 20vh;
+  width: calc(100% - 60px);
+  max-width: 1000px;
+  padding: 50px 30px;
+  box-shadow: 0 8px 32px rgba(231, 145, 145, 0.15);
+  text-align: center;
+  border-radius:10px;
+  transition: all 0.3s ease;
+
+  .empty-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    opacity: 0.7;
+  }
+
+  .empty-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #dc2626;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .empty-message {
+    font-size: 18px;
+    color: #3f2323ff;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+`

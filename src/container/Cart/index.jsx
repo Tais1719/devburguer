@@ -1,15 +1,15 @@
-// src/pages/Cart.jsx
-import Logo from '../../assets/logo.svg'
 import { CartItems, CartResume } from '../../components'
-import { Banner, Container, Title, Content } from './styles'
+import { Container, Title, Content } from './styles'
+import { useCart } from '../../hooks/CartContext'
 
 export function Cart() {
+  const { cartProducts } = useCart();
+
+  const hasProducts = cartProducts && cartProducts.length > 0;
+
   return (
     <Container>
-      <Banner>
-        <img src={Logo} alt='logo devburger' />
-      </Banner>
-      <Title>Checkout - Pedido</Title>
+      {hasProducts && <Title>Resumo do seu pedido</Title>} {/* só aparece se houver produtos */}
       <Content>
         <CartItems />
         <CartResume />

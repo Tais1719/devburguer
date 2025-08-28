@@ -41,7 +41,7 @@ export const Navigation = styled.div`
 
 export const HeaderLink = styled(Link)`
   color: ${(props) =>
-    props.$isActive ? props.theme.   emerald : props.theme.  darkGreen};
+    props.$isActive ? props.theme. lightGreen  : props.theme. deepGreen};
   border-bottom: ${(props) =>
     props.$isActive ? `1px solid ${(props) => props.theme. mainBlack}` : 'none'};
   padding-bottom: 5px;
@@ -52,7 +52,7 @@ export const HeaderLink = styled(Link)`
   transition: color 200ms;
 
   &:hover {
-    color: ${(props) => props.theme.  purple};
+    color: ${(props) => props.theme.   softGreen};
   }
 `;
 export const Options = styled.div`

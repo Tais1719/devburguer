@@ -1,53 +1,50 @@
-
 import { useEffect, useState } from "react"; 
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+import { api } from "../../services/api";
+import { useCart } from "../../hooks/CartContext";
+import { FormatPrice } from "../../utils/formatPrice";
 
-import {api } from "../../services/api";
-import {useCart} from "../../hooks/CartContext";
-import {FormatPrice} from "../../utils/formatPrice";
-
-import { Button } from "../../Button";
-import { Container } from "./styles";
-
+import { Container, EmptyCartContainer } from "./styles";
 
 export function CartResume() {
   const [finalPrice, setFinalPrice] = useState(0);
-  const [deliveryTax] = useState(500)
+  const [totalItems, setTotalItems] = useState(0); // total de itens
+  const deliveryTax = 500; // se for centavos, FormatPrice já cuida
 
-  const navigate = useNavigate()
-  const {cartProducts, clearCart} = useCart()
+  const navigate = useNavigate();
+  const { cartProducts } = useCart();
 
-  useEffect(()=>{
-    const sumaAllItems = cartProducts.reduce((acc, current) =>{ 
-      return current.price * current.quantity +acc
-     }, 0  )
-       setFinalPrice(sumaAllItems)
-  },[cartProducts] )
+  // Calcula total do valor e total de itens
+  useEffect(() => {
+    const totalValue = cartProducts.reduce(
+      (acc, product) => acc + product.price * product.quantity,
+      0
+    );
+    setFinalPrice(totalValue);
 
-  const submitOrder = async () =>{ 
-    const products = cartProducts.map((product) =>{ 
-      return { 
-        id: product.id, 
-        quantity: product.quantity,
-        price: product.price}
-    })
+    const itemsCount = cartProducts.reduce(
+      (acc, product) => acc + product.quantity,
+      0
+    );
+    setTotalItems(itemsCount);
+  }, [cartProducts]);
 
+  const submitOrder = async () => {
+    if (cartProducts.length === 0) return;
 
-    try{ 
-      const  { data } = await api.post('/create-payment_intent', { products })
+    const products = cartProducts.map(product => ({
+      id: product.id,
+      quantity: product.quantity,
+      price: product.price
+    }));
 
-
-
-      navigate('/checkout', {
-        state: data,
-      })
-      
-
-    } catch(err){ 
-
-      toast.error('error tente novamente!', {
+    try {
+      const { data } = await api.post("/create-payment_intent", { products });
+      navigate("/checkout", { state: data });
+    } catch (err) {
+      toast.error("Erro ao processar pedido. Tente novamente!", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -56,34 +53,45 @@ export function CartResume() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
-
-
-     }
-
-   }
-
-
-
-    
+      });
+    }
+  };
+if (!cartProducts || cartProducts.length === 0) {
   return (
-    <div>
-      <Container>
-        <div className="container-top">
-          <h2 className="title">Resumo do pedido</h2>
-          <p className="items">itens</p>
-          <p className="items-price">{FormatPrice(finalPrice)}</p>
-          <p className="delivery-tax">Taxa de entrega</p>
-      
-          <p className="delivery-tax-price">{FormatPrice( deliveryTax)}</p>
-
-        </div>
-        <div className="container-bottom">
-          <p>Total</p>
-          <p>{FormatPrice(finalPrice + deliveryTax)} </p>
-        </div>
-      </Container>
-      <Button onClick ={submitOrder} >Finalizar Pedido</Button>
-      </div>
+    <EmptyCartContainer>
+      <div className="empty-icon">🛒</div>
+      <h2 className="empty-title">Carrinho Vazio</h2>
+      <p className="empty-message">
+        Seu carrinho está vazio no momento.<br />
+        Adicione alguns itens para continuar!
+      </p>
+    </EmptyCartContainer>
   );
+}
+
+// Aqui só entra se houver produtos
+return (
+  <Container>
+    <div className="container-top">
+      <h2 className="title">Total do seu Pedido</h2>
+     <p className="items">
+  Itens (<span className="items-count">{totalItems}</span>)
+</p>
+
+     <div className="delivery-container">
+  <span className="delivery-tax">Taxa de Entrega:</span>
+  <span className="delivery-tax-price">{FormatPrice(deliveryTax)}</span>
+</div>
+
+    </div>
+    <div className="container-top" style={{ borderTop: "1px solid #ccc", marginTop: "10px", paddingTop: "10px", fontWeight: "600", }}>
+      <p>Total</p>
+      <p>{FormatPrice(finalPrice + deliveryTax)}</p>
+    </div>
+    <div className="container-button">
+      <button onClick={submitOrder}>Finalizar Pedido</button>
+    </div>
+  </Container>
+);
+
 }
