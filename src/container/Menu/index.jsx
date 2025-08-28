@@ -1,76 +1,98 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Banner, Container, ProductsContainer } from "./styles";
+import { CaretLeft } from '@phosphor-icons/react'; // ícone de voltar
+
+import { Container, Banner, CategoryMenu, ProductsContainer, CategoryButton, BackButton } from "./styles";
 import { api } from "../../services/api";
 import { FormatPrice } from "../../utils/formatPrice";
 import { CardProduct } from "../../components/CardProduct";
-import { useLocation } from "react-router-dom";
 
 export function Menu() {
+  const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  const navigate = useNavigate();
   const { search } = useLocation();
+
+  // Pega categoria da URL
   const queryParams = new URLSearchParams(search);
+  const categoryFromUrl = +queryParams.get("categoria") || 0;
 
-  const [activeCategory, setActiveCategory] = useState(() => {
-    const categoryId = +queryParams.get("categorias"); // <-- deve ter "s"
-    return isNaN(categoryId) ? 0 : categoryId;
-  });
+  const [activeCategory, setActiveCategory] = useState(categoryFromUrl);
 
-  // Carregar produtos
+  // Carrega categorias e produtos
   useEffect(() => {
-    async function loadProducts() {
-      try {
-        const { data } = await api.get("/products");
-        const formatted = data.map((product) => ({
-          ...product,
-          CurrencyValue: FormatPrice(product.price),
-        }));
-        setProducts(formatted);
-      } catch (error) {
-        console.error("Erro ao carregar produtos:", error);
-      }
+    async function loadCategories() {
+      const { data } = await api.get("/categories");
+      setCategories([{ id: 0, name: "Todas" }, ...data]);
     }
 
+    async function loadProducts() {
+      const { data } = await api.get("/products");
+      const newProducts = data.map((product) => ({
+        ...product,
+        currencyValue: FormatPrice(product.price),
+      }));
+      setProducts(newProducts);
+    }
+
+    loadCategories();
     loadProducts();
   }, []);
 
-  // Filtrar produtos ao mudar categoria
+  // Filtra produtos ao mudar categoria ou produtos
   useEffect(() => {
     if (activeCategory === 0) {
       setFilteredProducts(products);
     } else {
-      const filtered = products.filter(
-        (product) => product.category_id === activeCategory
+      setFilteredProducts(
+        products.filter((product) => product.category_id === activeCategory)
       );
-      setFilteredProducts(filtered);
     }
   }, [products, activeCategory]);
 
-  // Reagir à mudança na URL (ex: clique no link do Header)
+  // Atualiza categoria ativa quando a URL muda
   useEffect(() => {
-    const categoryId = +queryParams.get("categorias");
-    setActiveCategory(isNaN(categoryId) ? 0 : categoryId);
-  }, [search]);
+    setActiveCategory(categoryFromUrl);
+  }, [categoryFromUrl]);
 
   return (
-    <main>
-      <Container>
-        <Banner>
-          <h1>
-            <br />
-            Moda que te define
-            <br />
-            calidad que, que te <span>Acompaña!</span>
-          </h1>
-        </Banner>
+    <Container>
+      <Banner>
+        <h1>
+          O MELHOR <br />
+          HAMBÚRGUER <br />
+          ESTÁ AQUI!
+          <span>Esse cardápio está irresistível!</span>
+        </h1>
+      </Banner>
 
-        <ProductsContainer>
-          {filteredProducts.map((product) => (
-            <CardProduct product={product} key={product.id} />
-          ))}
-        </ProductsContainer>
-      </Container>
-    </main>
+      <CategoryMenu>
+        
+
+        {categories.map((category) => (
+          <CategoryButton
+            key={category.id}
+            $isActiveCategory={category.id === activeCategory}
+            onClick={() => {
+              navigate({
+                pathname: "/cardapio",
+                search: `?categoria=${category.id}`,
+              });
+              setActiveCategory(category.id);
+            }}
+          >
+            {category.name}
+          </CategoryButton>
+        ))}
+      </CategoryMenu>
+
+      <ProductsContainer>
+        {filteredProducts.map((product) => (
+          <CardProduct product={product} key={product.id} />
+        ))}
+      </ProductsContainer>
+    </Container>
   );
 }
