@@ -1,43 +1,23 @@
-// src/components/Header.jsx
 import { useNavigate, useLocation } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import { UserCircle, ShoppingCart, MagnifyingGlass } from '@phosphor-icons/react'
+import { UserCircle, ShoppingCart } from '@phosphor-icons/react'
 import { useUser } from '../../hooks/UserContent'
 import {
-  Container, HeaderLink, SearchForm, Options, Profile,
+  Container, HeaderLink, Options, Profile,
   LinkContainer, LogoutButton, Navigation, Content
 } from './styles'
 import { useCart } from '../../hooks/CartContext'
-import { api } from '../../services/api'
 
 export function Header() {
   const navigate = useNavigate()
   const { logout, userInfo } = useUser()
-  const { pathname, search } = useLocation()
+  const { pathname } = useLocation()
   const { getCartQuantity } = useCart()
-  const [searchTerm, setSearchTerm] = useState('')
-  const [categories, setCategories] = useState([])
   const count = getCartQuantity()
-
-  useEffect(() => {
-    async function loadCategories() {
-      try {
-        const { data } = await api.get('/categories')
-        setCategories(data)
-      } catch (error) {
-        console.error('Erro ao carregar categorias:', error)
-      }
-    }
-
-    loadCategories()
-  }, [])
 
   function logoutUser() {
     logout()
     navigate('/login')
   }
-
-  const currentCategory = new URLSearchParams(search).get('categorias')
 
   return (
     <Container style={{ position: 'fixed', zIndex: 9999, top: 0 }}>
@@ -45,17 +25,7 @@ export function Header() {
         <Navigation>
           <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
             <HeaderLink to="/" $isActive={pathname === '/'}>Inicio</HeaderLink>
-            <HeaderLink to="/cardapio" $isActive={pathname === '/cardapio' && !currentCategory}>Todos</HeaderLink>
-
-            {categories.map((category) => (
-              <HeaderLink
-                key={category.id}
-                to={`/cardapio?categorias=${category.id}`}
-                $isActive={pathname === '/cardapio' && currentCategory === String(category.id)}
-              >
-                {category.name}
-              </HeaderLink>
-            ))}
+            <HeaderLink to="/cardapio" $isActive={pathname === '/cardapio'}>Cardapio</HeaderLink>
           </div>
         </Navigation>
 
@@ -67,22 +37,6 @@ export function Header() {
               <LogoutButton onClick={logoutUser}>Sair</LogoutButton>
             </div>
           </Profile>
-
-          <SearchForm
-            onSubmit={(e) => {
-              e.preventDefault()
-              if (!searchTerm.trim()) return
-              navigate(`/buscar?query=${encodeURIComponent(searchTerm.trim())}`)
-            }}
-          >
-            <MagnifyingGlass size={18} />
-            <input
-              type="text"
-              placeholder="Buscar..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </SearchForm>
 
           <LinkContainer>
             <div style={{ position: 'relative' }}>
@@ -106,7 +60,7 @@ export function Header() {
                 </span>
               )}
             </div>
-            <HeaderLink to="/carrinho">Carrinho</HeaderLink>
+            <HeaderLink to="/carrinho">Carrinho de compras</HeaderLink>
           </LinkContainer>
         </Options>
       </Content>
