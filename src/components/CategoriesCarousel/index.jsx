@@ -66,7 +66,7 @@ export function CategoriesCarousel() {
     <CategoryButton to={`/cardapio?categoria=${category.id}`}>
       {category.name}
     </CategoryButton>
-  </ContainerItems>
+  </ContainerItems> 
 ))}
 
                 

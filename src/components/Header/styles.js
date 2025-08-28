@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export const Container = styled.div`
   background-color: ${(props) => props.theme.darkWhite};
   width: 100%;
-  height: 72px;
+  height: 66px;
   padding: 0 56px;
   gap: 90px;
 `;
@@ -36,21 +36,23 @@ export const Navigation = styled.div`
   hr {
     height: 24px;
     border: 1px solid red;
-  }
+  }  
 `;
 
 export const HeaderLink = styled(Link)`
   color: ${(props) =>
-    props.$isActive ? props.theme.   emerald : props.theme.  deepForest};
+    props.$isActive ? props.theme.   emerald : props.theme.  darkGreen};
   border-bottom: ${(props) =>
     props.$isActive ? `1px solid ${(props) => props.theme. mainBlack}` : 'none'};
   padding-bottom: 5px;
+  font-weight:600;
+  padding:20px;
   text-decoration: none;
   font-size: 16px;
   transition: color 200ms;
 
   &:hover {
-    color: ${(props) => props.theme. emerald};
+    color: ${(props) => props.theme.  purple};
   }
 `;
 export const Options = styled.div`
@@ -91,6 +93,12 @@ export const LogoutButton = styled.button`
   font-weight: 700;
   background-color: transparent;
   border: none;
+
+
+  
+  &:hover {
+    color: ${(props) => props.theme. emerald};
+  }
 `;
 
 export const SearchForm = styled.form`
@@ -107,7 +115,7 @@ export const SearchForm = styled.form`
     padding: 4px;
   }
 
-  button {
+  button { 
     background: none;
     border: none;
     cursor: pointer;

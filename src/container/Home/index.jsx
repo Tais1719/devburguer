@@ -1,6 +1,6 @@
 
 import { OffersCarousel, CategoriesCarousel,  } from "../../components"
-import { Banner, Container,Text, } from "./styles";
+import { Banner, Container, } from "./styles";
 
 export function Home() {
 
@@ -9,7 +9,7 @@ export function Home() {
        
             <Banner>
                 <h1>Bem vindo</h1>
-                <Text>Comprar Ropa Básica Hombre</Text>
+              
                 
             </Banner>
 

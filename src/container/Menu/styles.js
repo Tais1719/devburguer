@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import BannerHamburger from "../../assets/banner-hamburger.svg"
-import Background from "../../assets/background.svg"
+import Background from "../../assets/background-login.svg"
 
 
 import { Link } from "react-router-dom";
@@ -11,8 +11,8 @@ export const Container = styled.div`
     background: ${(props) => props.theme.secondWhite};
 
     background:
-            linear-gradient(
-            rgba(255,255,255,0.5),
+            linear-gradient(   
+            rgba(255, 255, 255, 0.5),
             rgba(255,255,255,0.5)
             ),
             url('${Background}');
@@ -66,13 +66,13 @@ export const CategoryButton = styled(Link)`
     text-decoration: none;
     background: none;
     cursor: pointer;
-    color:${props => props.$isActiveCategory ? '#9758A6' : '#696969'}; //se a categoria for ativa, muda a cor
+    color:${props => props.$isActiveCategory ? '#079626ff' : '#02351cff'}; //se a categoria for ativa, muda a cor
     font-size: 24px;
     font-weight: 500;
     padding-bottom: 5px;
     line-height: 20px;
     border: none;
-    border-bottom: ${props => props.$isActiveCategory && '3px solid  #9758A6'}; //se a categoria for ativa, coloca a borda
+    border-bottom: ${props => props.$isActiveCategory && '3px solid  #052e1dff'}; //se a categoria for ativa, coloca a borda
 
 `
 

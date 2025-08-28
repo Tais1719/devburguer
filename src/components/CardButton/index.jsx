@@ -6,7 +6,7 @@ export function CardButton ({...props}){
     
          <ContainerButton {...props}>
           
-          Agregar al carrito
+         Adicionar ao carrinho
          </ContainerButton>
      
     )

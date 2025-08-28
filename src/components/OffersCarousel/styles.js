@@ -40,27 +40,44 @@ padding-bottom:40px;
 
 
 `
-
 export const Title = styled.h2`
-font-size: 32px;
-color:blue;
-font-weight: 900;
-padding-bottom: 8px;
-position: relative;
-text-align: center;
-margin:60px 0;
+  font-size: 40px;
+  font-weight: 900;
+  text-align: center;
+  margin: 60px 0;
+  position: relative;
+  padding-bottom: 12px;
+  color: #7e40b8ff; /* purple */
 
-&::after{
+  /* Glow simples */
+  text-shadow: 0 0 8px #9758a6AA;
+
+  /* Movimento suave do título */
+  animation: titleMove 3s ease-in-out infinite alternate;
+
+  &::after {
     content: '';
     position: absolute;
     bottom: 0;
-    width: 55px;
-    height: 4px;
-    background:navy;
     left: 50%;
-transform: translateX(-28px);
+    width: 60px;
+    height: 4px;
+    border-radius: 5px;
+    background: #600375ff; /* secondDarkPurple */
+    transform: translateX(-50%);
+    box-shadow: 0 0 8px #c663dfff; /* darkPurple */
+    animation: lineMove 2s ease-in-out infinite alternate;
+  }
 
-}
+  @keyframes titleMove {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.05); }
+    100% { transform: translateY(0) scale(1); }
+  }
 
-
-`
+  @keyframes lineMove {
+    0% { transform: translateX(-50%) scaleX(1); }
+    50% { transform: translateX(-50%) scaleX(1.3); }
+    100% { transform: translateX(-50%) scaleX(1); }
+  }
+`;

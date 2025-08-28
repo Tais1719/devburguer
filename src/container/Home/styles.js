@@ -31,7 +31,7 @@ export const Banner = styled.div`
     margin-top: 50px;
     font-family: "Road Rage", sans-serif;
     font-size: 80px;
-    color:#1b4332;
+    color:white;
     margin-bottom: 1rem;
   }
 
@@ -47,17 +47,6 @@ export const Banner = styled.div`
   }
 `;
 
-export const Text = styled.p`
-  color: #111;
-  font-size: 1.5rem;
-  font-weight: 400;
-  background: rgba(255, 255, 255, 0.85);
-  height: 50px;
-  width: 30%;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-
-`; 
 
 
 export const Container = styled.section`

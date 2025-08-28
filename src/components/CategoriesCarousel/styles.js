@@ -16,29 +16,28 @@ export const Container = styled.div`
 
     padding-left: 40px;
 `
-
 export const Title = styled.h2`
     font-size: 32px;
     font-weight: 800;
-    color: ${(props) => props.theme.purple};
+    color: ${(props) => props.theme.   secondDarkPurple};
     padding-bottom: 12px;
     position: relative;
     text-align: center;
     margin-bottom: 40px;
-    margin-top: 20px;
+    margin-top: 20px; 
 
     &::after {
         content: '';
         position: absolute;
         width: 56px;
         height: 4px;
-        background-color: ${(props) => props.theme.purple};
+        background-color: ${(props) => props.theme.black};
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-
+        z-index: 1; /* Adicionando z-index */
     }
-`
+`;
 
 export const ContainerItems = styled.div`
     background: url('${props => props.imageUrl}');
