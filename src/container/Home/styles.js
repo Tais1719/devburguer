@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import BannerHome from '../../assets/logo3.jpg';
+import BannerHome from '../../assets/banner-home.svg';
 import Background from '../../assets/logo3.jpg';
 
 // Reset global corrigido (altura deve ser 100%)
@@ -57,7 +57,8 @@ export const Text = styled.p`
   padding: 0.5rem 1rem;
   border-radius: 6px;
 
-`;
+`; 
+
 
 export const Container = styled.section`
   background: rgba(234, 234, 227, 0.85);
