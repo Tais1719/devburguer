@@ -51,7 +51,7 @@ const responsive = {
 
     return(
         <Container>
-           <Title>Ofertas del Día</Title> 
+           <Title>Ofertas do dia </Title> 
          
           <Carousel
     responsive={responsive}
