@@ -143,7 +143,7 @@ export function EditProduct() {
           </Containercheckbox>
         </InputGroup>
 
-        <SubmitButton>Editar Produto</SubmitButton>
+        <SubmitButton>Editar Produto</SubmitButton> 
         <DeletarButton type="button" onClick={() => setShowModal(true)}>
           Deletar Produto
         </DeletarButton>

@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 
 export const Container = styled.div`
-  width: 100vw; /* Ocupa toda a largura da viewport */
+  width: 96vw; /* Ocupa toda a largura da viewport */
 .carousel-item{
 
     padding-right: 40px;
     
-
 } 
 
 overflow-x: hidden;
@@ -28,7 +27,7 @@ overflow: visible;
 }
 
 .react-multiple-carousel__arrow--right {
-
+right: 70px;
   top:10px;
 
 }

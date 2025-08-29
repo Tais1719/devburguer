@@ -97,7 +97,7 @@ export  function CheckoutForm() {
 
   const paymentElementOptions = {
     layout: "accordion",
-  };
+  }; 
 
   return (
     <div className="container">

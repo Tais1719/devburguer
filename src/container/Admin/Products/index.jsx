@@ -59,7 +59,7 @@ export function Products() {
             <TableCell align="center">Image do Produto</TableCell>
             <TableCell align="center">Editar Produto</TableCell>
           </TableRow>
-        </TableHead>
+        </TableHead> 
         <TableBody>
           {products.map((product) => (
             <TableRow

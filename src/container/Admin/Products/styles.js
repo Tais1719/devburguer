@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 
 export const Container = styled.div`
-background-color: red;
-margin-left:250px;
+
+margin-left:100px;
 
 
 `;
@@ -44,7 +44,7 @@ svg{
 
     svg{
    
-        fill:${(props) => props.theme.white}
+        fill:${(props) => props.theme.red}
 }
 }
 

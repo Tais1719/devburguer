@@ -29,20 +29,21 @@ justify-content: center;
 margin: 28px 0;
 gap: 50px;
 
-
+  
 `;
 
 
 export const FilterOption = styled.button`
-  cursor: pointer;
+  cursor: pointer;  
   border: none;
   background: none;
   color:${(props) =>
-     props.$isActiveStatus ? props.theme. darkBlue: props.theme.darkGray};
+     props.$isActiveStatus ? props.theme. darkBlue: props.theme.black};
   border-bottom: ${(props) =>
-    props.$isActiveStatus ? `4px solid ${props.theme. darkBlue}` : 'none'};
+    props.$isActiveStatus ? `4px solid ${props.theme.  green}` : 'none'};
   font-size: 18px;
   line-height: 20px;
   padding-bottom: 5px;
 `;
 
+ 

@@ -8,7 +8,7 @@ export function Home() {
         <main>
        
             <Banner>
-                <h1>Bem vindo</h1>
+                <h1>bem-vindo(a)</h1>
               
                 
             </Banner>

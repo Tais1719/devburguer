@@ -88,7 +88,7 @@ background-color: red;
 `;
 
 export const SubmitButton = styled(Button)`
-margin-top: 20px;
+margin-top: 10px;
 
 `;
 

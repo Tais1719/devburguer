@@ -1,9 +1,10 @@
+// Footer.jsx
 import { Container } from "./styles";  
 
 export function Footer() {
   return (
     <Container>
-      <p> "Todos los derechos reservados".</p>
+      <p>Todos os direitos reservados.</p>
     </Container>
   );
 }

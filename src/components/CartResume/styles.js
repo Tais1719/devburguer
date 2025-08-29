@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background:  #ecf3e9ff ;
+  background:  #e9e9e9ff ;
   border-radius: 24px;
   margin-left: 30px;
 padding: 20px;
@@ -127,14 +127,14 @@ height:40vh;
 
 export const EmptyCartContainer = styled.div`
 
-  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+  background: linear-gradient(135deg, #e4d5d5ff 0%, #dbd8d8ff 100%);
   border-radius: 24px;
   margin-left: 60vh;
- margin-top: 20vh;
+ margin-top: 30vh;
   width: calc(100% - 60px);
   max-width: 1000px;
   padding: 50px 30px;
-  box-shadow: 0 8px 32px rgba(231, 145, 145, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   text-align: center;
   border-radius:10px;
   transition: all 0.3s ease;

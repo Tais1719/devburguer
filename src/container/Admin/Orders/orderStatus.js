@@ -16,8 +16,8 @@ export const orderStatusOptions = [
    
     { 
         id: 2, 
-        label: 'em preparacao',
-       value:'em preparacao',
+        label: 'Em Preparação',
+       value:'Em Preparação',
     },
    
     { 
