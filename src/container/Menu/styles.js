@@ -8,14 +8,9 @@ import { Link } from "react-router-dom";
 export const Container = styled.div`
     width: 100%;
     min-height: 100vh;
-    background: ${(props) => props.theme.secondWhite};
+    background: #e6eceaff;
 
-    background:
-            linear-gradient(   
-       
-            #fffcfc80
-            ),
-            url('${Background}');
+ 
 `
 
 export const Banner = styled.section`
@@ -67,13 +62,13 @@ export const CategoryButton = styled(Link)`
     background: none;
     font-family:inherit;
     cursor: pointer;
-    color:${props => props.$isActiveCategory ? '#626663ff' : '#05a820ff'}; //se a categoria for ativa, muda a cor
-    font-size: 20px;
+    color:${props => props.$isActiveCategory ? '#626663ff' : '#000c02ff'}; //se a categoria for ativa, muda a cor
+    font-size: 19px;
     font-weight: 600;
     padding-bottom: 5px;
     line-height: 20px;
     border: none;
-    border-bottom: ${props => props.$isActiveCategory && '3px solid  #3a8b6aff'}; //se a categoria for ativa, coloca a borda
+    border-bottom: ${props => props.$isActiveCategory && '3px solid  #b40202ff'}; //se a categoria for ativa, coloca a borda
 
 `
 
@@ -81,10 +76,10 @@ export const ProductsContainer = styled.section`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     padding: 40px;
-    gap: 60px;
+    gap: 50px;
     justify-content: center;
     max-width: 1280px;
-    margin: 50px auto 0;
+    margin: 60px auto 0;
 `
 
 export const BackButton = styled(Link)`
@@ -102,6 +97,7 @@ export const BackButton = styled(Link)`
     text-decoration: none;
 
     img{
+    
         width: 20px;
         margin-right: 10px;
         transform: rotate(-180deg);

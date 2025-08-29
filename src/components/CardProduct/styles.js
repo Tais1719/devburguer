@@ -4,31 +4,31 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
-    padding: 20px;
+    gap: 60px;
+    padding: 10px;
     border-radius: 8px;
-       background: #f3f2f5ff; /* secondDarkPurple */
+       background: #f9f6ffff; /* secondDarkPurple */
     cursor: grab;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     position: relative;
 div {
     width: 100%;
-    height: 80px;
+    height: 100px;
     display: flex;
     flex-direction: column;
-    justify-content: center;  // centraliza verticalmente
-    gap: 5px;
+    justify-content: center;  // centraliza verticalmente  
+    gap: 3px;
 
     p {
         font-size: 15px;
         color: ${(props) => props.theme.black};
         line-height: 20px;
-        margin-top:80px;  
+        margin-top: 120px;
         text-align: center; // centraliza o texto horizontalmente
     }
 
     strong {
-        font-size: 19px;
+        font-size: 16px;
         color: ${(props) => props.theme.red};
         font-weight: 600;
         line-height: 30px;
@@ -39,7 +39,7 @@ div {
 `
 
 export const CardImage = styled.img`
-    height: 100px;
+    height: 115px;
     position: absolute;
     top: -50px;
 `

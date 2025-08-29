@@ -23,12 +23,12 @@ overflow: visible;
 
 .react-multiple-carousel__arrow--left {
     left: 10px;
-  top: 10px;
+  top: 10px;   
 
 }
 
 .react-multiple-carousel__arrow--right {
-right: 130px;
+
   top:10px;
 
 }
