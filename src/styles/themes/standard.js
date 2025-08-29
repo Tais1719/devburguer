@@ -22,3 +22,4 @@ export const standardTheme = {
     roadRageFont: '"Road Rage", sans-serif',
     poppinsFont: '"Poppins", sans-serif',
 };
+ 

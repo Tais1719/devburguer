@@ -5,4 +5,4 @@ const stripePromise = loadStripe('pk_test_51RJZ7DEKS6zcENMZybVOHBKdwxHb4eek7D3zT
 
 
 
-export default stripePromise
+export default stripePromise 

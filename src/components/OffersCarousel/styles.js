@@ -46,7 +46,7 @@ export const Title = styled.h2`
   text-align: center;
   margin: 60px 0;
   position: relative;
-  padding-bottom: 12px;
+  padding-bottom: 20px;
   color: #3e5244ff; /* purple */
 
 

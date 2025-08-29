@@ -12,8 +12,8 @@ export const Container = styled.div`
 
     background:
             linear-gradient(   
-            rgba(255, 255, 255, 0.5),
-            rgba(255,255,255,0.5)
+       
+            #fffcfc80
             ),
             url('${Background}');
 `
@@ -65,20 +65,21 @@ export const CategoryMenu = styled.section`
 export const CategoryButton = styled(Link)`
     text-decoration: none;
     background: none;
+    font-family:inherit;
     cursor: pointer;
-    color:${props => props.$isActiveCategory ? '#079626ff' : '#02351cff'}; //se a categoria for ativa, muda a cor
-    font-size: 24px;
-    font-weight: 500;
+    color:${props => props.$isActiveCategory ? '#626663ff' : '#05a820ff'}; //se a categoria for ativa, muda a cor
+    font-size: 20px;
+    font-weight: 600;
     padding-bottom: 5px;
     line-height: 20px;
     border: none;
-    border-bottom: ${props => props.$isActiveCategory && '3px solid  #052e1dff'}; //se a categoria for ativa, coloca a borda
+    border-bottom: ${props => props.$isActiveCategory && '3px solid  #3a8b6aff'}; //se a categoria for ativa, coloca a borda
 
 `
 
 export const ProductsContainer = styled.section`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     padding: 40px;
     gap: 60px;
     justify-content: center;

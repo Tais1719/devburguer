@@ -49,7 +49,7 @@ export function CategoriesCarousel() {
         }
     };
 
-
+  
     return (
         <Container>
             <Title>Categorias</Title>

@@ -9,7 +9,7 @@ import {  CheckoutForm  }from "../../components";
 // Renomeie de ChecKout para Checkout
 export function Checkout() {
   const { state: { clientSecret } } = useLocation();
-
+  
   if (!clientSecret) {
     return <div>Error, volte e tente novamente</div>;
   }
