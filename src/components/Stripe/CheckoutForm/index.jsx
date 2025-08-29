@@ -18,7 +18,7 @@ export  function CheckoutForm() {
     const {cartProducts, clearCart} = useCart()
     const navigate = useNavigate()
 
-  const stripe = useStripe();
+  const stripe = useStripe(); 
   const elements = useElements();
   const {
     state: { dpmCheckerLink },

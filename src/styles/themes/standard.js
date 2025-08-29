@@ -10,13 +10,13 @@ export const standardTheme = {
     lightGray: '#cdcdcd',
     red: '#ff3205',
     darkRed: '#cf3057',
-    white: '#fff',
+    white: '#fff',   
     secondWhite: '#f0f0f0',
     darkWhite: '#f4f4f4',
     green: '#386520',          // verde escuro principal
     darkGreen: '#234214',      // verde ainda mais escuro
     deepGreen: '#1b3018',      // verde profundo, quase preto
-     lightGreen: '#61a120',     // verde claro
+     lightGreen: '#61a120',     // verde claro   
     softGreen: '#8fdc82',      // verde suave, pastel
     neonGreen: '#a3ffb1',      // verde neon para destaque
     roadRageFont: '"Road Rage", sans-serif',

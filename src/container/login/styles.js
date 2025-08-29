@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Background from '../../assets/background.svg'
-import BackgroundLogin from '../../assets/background-login.svg'
+import Background from '../../assets/logo1.png'
+
 import { Link as ReactLink } from "react-router-dom";
 
 export const Container = styled.div`
@@ -14,7 +14,7 @@ right: 100vw;
 export const LeftContainer = styled.div`
 background: url('${Background}');
 background-size:cover ;
-background-position:center;
+background-position:center; 
 height: 100%;
 width:100%;
 display: flex;
@@ -38,24 +38,25 @@ flex-direction: column;
 height: 100%;
 width:100%;
 max-width: 50%;
-background: url('${BackgroundLogin}');
-background-color: #1e1e1e;
+
+background-color: #e8fff2ff;
 
 
 
 
 p{
   
-color: #fff;
+color: #033a0cff;
 font-size: 18px;
 font-weight: 800;
-
+font-family:'Poppins", sans-serif',
+   
 
 }
 
 a{
   text-decoration: underline;
-  color:rgb(56, 26, 249) ;
+  color:rgba(243, 0, 0, 1) ;
   
   
   }
@@ -66,9 +67,9 @@ a{
 
 export const Title = styled.h2`
 
-font-family: "Road Rage", serif;
-  font-size: 40px;
-  color: ${(props) =>props.theme.darkBlue};
+font-family:  'Poppins", sans-serif';
+  font-size: 35px;
+  color: #02521aff;
   
 
 
@@ -103,8 +104,9 @@ padding: 0 16px;
 }
  
  label{
+  font-family:'Poppins", sans-serif';
     font-size: 18px;
-   color: #fff;
+   color: #083b03ff;
     font-weight: 600;
 
 }

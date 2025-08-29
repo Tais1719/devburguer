@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 import BannerHome from '../../assets/banner-home.svg';
-import Background from '../../assets/logo3.jpg';
+
 
 // Reset global corrigido (altura deve ser 100%)
 export const GlobalStyle = createGlobalStyle`

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Background from '../../assets/background.svg'
+import Background from '../../assets/logo1.png'
 import BackgroundLogin from '../../assets/background-login.svg'
 import { Link as ReactLink } from "react-router-dom";
 
@@ -16,15 +16,12 @@ background: url('${Background}');
 background-size:cover ;
 background-position:center;
 height: 100%;
-width:100%;
+width:100%; 
 display: flex;
 align-items: center;
 justify-content: center;
 
-img{
-    width: 80%;
 
-}
 
 `
 
@@ -39,7 +36,7 @@ height: 100%;
 width:100%;
 max-width: 50%;
 background: url('${BackgroundLogin}');
-background-color: #1e1e1e;
+background-color: #383737ff;
 
 
 
@@ -53,13 +50,13 @@ font-weight: 800;
 
 }
 
-a{
+a{ 
   text-decoration: underline;
   color:rgba(10, 250, 230, 0.69) ;
   
   
   
-  }
+  } 
 
 
 
@@ -69,7 +66,7 @@ export const Title = styled.h2`
 
 font-family: "Road Rage", serif;
   font-size: 40px;
-  color: ${(props) =>props.theme.darkBlue};
+  color:#61a120;
   
 
 

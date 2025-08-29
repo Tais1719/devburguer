@@ -22,7 +22,7 @@ export function CardProduct ({product }) {
       <div>
         <p>{product.name}</p>
         <strong>{product.CurrencyValue}</strong>
-      </div>
+      </div>    
       <CardButton onClick={() => putProductInCart(product)} />
     </Container>
   );
